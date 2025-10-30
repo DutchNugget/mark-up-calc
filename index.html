@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markup Calculator</title>
+    <link rel = "stylesheet" href="styles.css">
+</head>
+<body>
+    <form id ="form">
+        <div id ="inputs">
+            <h2>Electricity Usage & Fixed Costs</h2>
+
+            <div class="month-input">
+                <h3>Month 1</h3>
+                <label for="fixed1">Fixed Costs :</label>
+                <input type="number" id="fixed1" name="fixed1" step="10">
+
+                <label for="kwh1">Total kWh Consumption:</label>
+                <input type="number" id="kwh1" name="kwh1" step="10">
+            </div>
+
+            <div class="month-input">
+                <h3>Month 2</h3>
+                <label for="fixed2">Fixed Costs :</label>
+                <input type="number" id="fixed2" name="fixed2" step="10">
+
+                <label for="kwh2">Total kWh Consumption:</label>
+                <input type="number" id="kwh2" name="kwh2" step="10">
+            </div>
+
+            <div class="month-input">
+                <h3>Month 3</h3>
+                <label for="fixed3">Fixed Costs :</label>
+                <input type="number" id="fixed3" name="fixed3" step="10">
+
+                <label for="kwh3">Total kWh Consumption:</label>
+                <input type="number" id="kwh3" name="kwh3" step="10">
+            </div>
+
+            <div class = "safe-guard">
+                <label for="safe-check">Add 10% as safeguard?</label>
+                <input type ="checkbox" id="guardCheck">
+            </div>
+
+            <div class ="submit-form">
+                <button id ="submit">calculate markup </button>
+            </div>
+        
+        </div>
+
+    </form>
+
+    <script src ="calc.js"></script>
+</body>
+</html>

@@ -16,58 +16,71 @@ const kwh3 = document.getElementById("kwh3");
 
 const safeCheck = document.getElementById("guardCheck");
 
-const caclulate = document.getElementById("submit");
-caclulate.addEventListener("click", calculateResult);
+const calculate = document.getElementById("submit");
+calculate.addEventListener("click", calculateResult);
 
-const form                  = document.getElementById("form")
-const resultDisplay         = document.createElement("div")
-resultDisplay.style.display = "none"
-
+const form                  = document.getElementById("form");
+const resultDisplay         = document.createElement("div");
+resultDisplay.style.display = "none" ;
+form.appendChild(resultDisplay);
 
 
 
 // STEP 2:calculate function
-// - Get the fixed cost and kWh for months 1, 2, and 3
-// - Convert them to numbers using Number() or parseFloat()
+// - clear resultDisplay first for previous results 
+// - Get the fixed cost and kWh for months 1, 2, and 3 total
+// - Convert them to numbers using Number()
 // - Check if the safeguard checkbox is checked
+// - Calculate markup by totalfix / kwh 
 function calculateResult (event) {
     event.preventDefault();
-    caclulate.style.display = "none"
+
+    while (resultDisplay.firstChild) {
+        resultDisplay.removeChild(resultDisplay.firstChild)
+    }
+
+    calculate.style.display = "none"
     const fixedTotal = Number(fixed1.value) + Number(fixed2.value) + Number(fixed3.value);
     const kwhTotal   = Number(kwh1.value)   + Number(kwh2.value)   + Number(kwh3.value);
     let result     = fixedTotal / kwhTotal
+
+    if (kwhTotal === 0) {
+        alert("Total kWh cannot be zero");
+        return;
+    }
     
     if (safeCheck.checked) {
         result *= 1.10
     } 
+
     resultDisplay.style.display = "block"
     const markUp = document.createElement("p")
-    markUp.textContent = `Suggested markup is ${result} kroner`
+    markUp.textContent = `Suggested markup is ${result.toFixed(2)} kroner`
     resultDisplay.appendChild(markUp)
     
     const resetForm             =  document.createElement("button");
     resetForm.textContent       = "reset form";
-    form.appendChild(resultDisplay);
+    
     resultDisplay.appendChild(resetForm);
 
-    newcalc.addEventListener("click", resetCalc)
+    resetForm.addEventListener("click", resetCalc)
 
 }
 
-// STEP 4: Calculate the markup for each month
+function resetCalc (event) {
+    event.preventDefault();
+    resultDisplay.style.display = "none"
+    form.reset();
+    calculate.style.display = "block";
+
+
+}
+
+// STEP 4: Calculate the markup of total 
 // - If kWh is 0 or empty, set the markup to null (because you can’t divide by zero)
 // - Otherwise, calculate markup = fixed cost / kWh
 
 
-// STEP 5: Add up the totals
-// - totalFixed = the sum of all three fixed costs
-// - totalKwh = the sum of all three kWh values
-// - combinedMarkup = totalFixed / totalKwh (only if totalKwh is greater than 0)
-
-
-// STEP 6: Check if the safeguard option is on
-// - If it is, multiply each markup and the combined markup by 1.10
-// - If it isn’t, just keep them as they are
 
 
 // STEP 7: Display the results on the page
