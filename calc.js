@@ -6,16 +6,36 @@
 // - Create a <div> in JavaScript to display the results
 // - Create a reset button and keep it hidden at first
 
+const fixed1 = document.getElementById("fixed1");
+const fixed2 = document.getElementById("fixed2");
+const fixed3 = document.getElementById("fixed3");
 
-// STEP 2: Add an event listener to the calculate button
-// - When the button is clicked, run a function that performs the calculations
+const kwh1 = document.getElementById("kwh1");
+const kwh2 = document.getElementById("kwh2");
+const kwh3 = document.getElementById("kwh3");
+
+const safeCheck = document.getElementById("guardCheck");
+
+const caclulate = document.getElementById("submit");
+caclulate.addEventListener("click", calculateResult);
+
+const form                  = document.getElementById("form")
+const resultDisplay         = document.createElement("div")
+resultDisplay.style.display = "none"
+const resetForm             = document.createElement("button");
+resetForm.textContent       = "reset form";
+form.appendChild(resultDisplay);
+resultDisplay.appendChild(resetForm);
 
 
-// STEP 3: Inside that function, read all the input values
+
+// STEP 2:calculate function
 // - Get the fixed cost and kWh for months 1, 2, and 3
 // - Convert them to numbers using Number() or parseFloat()
 // - Check if the safeguard checkbox is checked
-
+function calculateResult (event) {
+    event.preventDefault();
+}
 
 // STEP 4: Calculate the markup for each month
 // - If kWh is 0 or empty, set the markup to null (because you can’t divide by zero)
