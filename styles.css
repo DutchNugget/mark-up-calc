@@ -1,1 +1,173 @@
+/* ====== General body styling ====== */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
 
+/* ====== Form container ====== */
+form#form {
+    background-color: #ffffff;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    max-width: 450px;
+    width: 100%;
+}
+
+/* ====== Form heading ====== */
+form#form h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 20px;
+    text-align: center;
+    color: #333;
+}
+
+/* ====== Month input blocks ====== */
+.month-input {
+    margin-bottom: 20px;
+    background-color: #fafafa;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.month-input h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #222;
+}
+
+/* ====== Labels & inputs ====== */
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #555;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    margin-bottom: 12px;
+    transition: border-color 0.2s;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+/* ====== Safe-guard checkbox ====== */
+.safe-guard {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center; /* centers checkbox & label vertically */
+    font-size: 14px;
+    color: #555;
+}
+
+.safe-guard label {
+    display: flex;
+    align-items: center; /* centers text vertically with checkbox */
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.safe-guard input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    accent-color: #2196F3;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    transition: all 0.2s;
+}
+
+.safe-guard input[type="checkbox"]:hover {
+    border-color: #1976D2;
+}
+
+/* ====== Calculate button ====== */
+button#submit {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #2196F3;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+    transition: background-color 0.2s ease;
+}
+
+button#submit:hover {
+    background-color: #1976D2;
+}
+
+/* ====== Result container ====== */
+#resultDisplay {
+    margin-top: 25px;
+    background-color: #ffffff;
+    padding: 20px 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    max-width: 450px;
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.6;
+    display: none;
+}
+
+#resultDisplay p {
+    margin: 6px 0;
+    color: #555;
+    font-size: 14px;
+}
+
+/* ====== Reset button ====== */
+#resultDisplay button.reset-btn {
+    margin-top: 15px;
+    background-color: #ff5722; /* orange/red */
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+}
+
+#resultDisplay button.reset-btn:hover {
+    background-color: #e64a19; /* darker orange/red */
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 500px) {
+    form#form, #resultDisplay {
+        padding: 20px;
+    }
+
+    button#submit, #resultDisplay button {
+        padding: 10px 14px;
+    }
+
+    label {
+        font-size: 13px;
+    }
+}

@@ -46,6 +46,7 @@ function calculateResult (event) {
 
     if (kwhTotal === 0) {
         alert("Total kWh cannot be zero");
+        
         return;
     }
     
@@ -60,6 +61,7 @@ function calculateResult (event) {
     
     const resetForm             =  document.createElement("button");
     resetForm.textContent       = "reset form";
+    resetForm.classList.add("reset-btn");
     
     resultDisplay.appendChild(resetForm);
 
