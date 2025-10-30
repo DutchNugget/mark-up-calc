@@ -78,7 +78,6 @@ function resetCalc (event) {
     form.reset();
     calculate.style.display = "block";
 
-
 }
 
 
