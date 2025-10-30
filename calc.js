@@ -22,6 +22,7 @@ calculate.addEventListener("click", calculateResult);
 const form                  = document.getElementById("form");
 const resultDisplay         = document.createElement("div");
 resultDisplay.style.display = "none" ;
+resultDisplay.id = "resultDisplay";
 form.appendChild(resultDisplay);
 
 
@@ -46,7 +47,7 @@ function calculateResult (event) {
 
     if (kwhTotal === 0) {
         alert("Total kWh cannot be zero");
-        
+        resetCalc()
         return;
     }
     
@@ -70,7 +71,7 @@ function calculateResult (event) {
 }
 
 function resetCalc (event) {
-    event.preventDefault();
+    if (event) event.preventDefault();
     resultDisplay.style.display = "none"
     form.reset();
     calculate.style.display = "block";
