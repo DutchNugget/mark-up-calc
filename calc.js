@@ -22,10 +22,7 @@ caclulate.addEventListener("click", calculateResult);
 const form                  = document.getElementById("form")
 const resultDisplay         = document.createElement("div")
 resultDisplay.style.display = "none"
-const resetForm             = document.createElement("button");
-resetForm.textContent       = "reset form";
-form.appendChild(resultDisplay);
-resultDisplay.appendChild(resetForm);
+
 
 
 
@@ -35,6 +32,26 @@ resultDisplay.appendChild(resetForm);
 // - Check if the safeguard checkbox is checked
 function calculateResult (event) {
     event.preventDefault();
+    caclulate.style.display = "none"
+    const fixedTotal = Number(fixed1.value) + Number(fixed2.value) + Number(fixed3.value);
+    const kwhTotal   = Number(kwh1.value)   + Number(kwh2.value)   + Number(kwh3.value);
+    let result     = fixedTotal / kwhTotal
+    
+    if (safeCheck.checked) {
+        result *= 1.10
+    } 
+    resultDisplay.style.display = "block"
+    const markUp = document.createElement("p")
+    markUp.textContent = `Suggested markup is ${result} kroner`
+    resultDisplay.appendChild(markUp)
+    
+    const resetForm             =  document.createElement("button");
+    resetForm.textContent       = "reset form";
+    form.appendChild(resultDisplay);
+    resultDisplay.appendChild(resetForm);
+
+    newcalc.addEventListener("click", resetCalc)
+
 }
 
 // STEP 4: Calculate the markup for each month
