@@ -1,4 +1,4 @@
-// STEP 1: Get all the HTML elements you need
+// Get all the HTML elements you need
 // - Get each month's fixed cost input
 // - Get each month's kWh input
 // - Get the safeguard checkbox
@@ -27,11 +27,10 @@ form.appendChild(resultDisplay);
 
 
 
-// STEP 2:calculate function
+// Calculate function
 // - clear resultDisplay first for previous results 
 // - Get the fixed cost and kWh for months 1, 2, and 3 total
 // - Convert them to numbers using Number()
-// - Check if the safeguard checkbox is checked
 // - Calculate markup by totalfix / kwh 
 function calculateResult (event) {
     event.preventDefault();
@@ -45,16 +44,18 @@ function calculateResult (event) {
     const kwhTotal   = Number(kwh1.value)   + Number(kwh2.value)   + Number(kwh3.value);
     let result     = fixedTotal / kwhTotal
 
-    if (kwhTotal === 0) {
-        alert("Total kWh cannot be zero");
+// reset form if kwh or cost total = 0
+    if (kwhTotal === 0 && fixedTotal === 0) {
+        alert("Cannot be zero");
         resetCalc()
         return;
     }
     
+// - Check if the safeguard checkbox is checked
     if (safeCheck.checked) {
         result *= 1.10
     } 
-
+// - make resultDisplay visible and append resetform 
     resultDisplay.style.display = "block"
     const markUp = document.createElement("p")
     markUp.textContent = `Suggested markup is ${result.toFixed(2)} kroner`
@@ -70,6 +71,7 @@ function calculateResult (event) {
 
 }
 
+// - form reset button 
 function resetCalc (event) {
     if (event) event.preventDefault();
     resultDisplay.style.display = "none"
@@ -79,26 +81,5 @@ function resetCalc (event) {
 
 }
 
-// STEP 4: Calculate the markup of total 
-// - If kWh is 0 or empty, set the markup to null (because you can’t divide by zero)
-// - Otherwise, calculate markup = fixed cost / kWh
 
 
-
-
-// STEP 7: Display the results on the page
-// - Make the results div visible
-// - Show each month’s markup, rounded to two decimal places
-// - Show the total fixed cost, total kWh, and combined markup
-// - If the safeguard option was used, show both the normal and safeguarded values
-
-
-// STEP 8: Show the reset button
-// - Make it visible after the calculation is complete
-
-
-// STEP 9: Add an event listener to the reset button
-// - Clear all the input fields
-// - Uncheck the safeguard checkbox
-// - Hide the results again
-// - Hide the reset button again
